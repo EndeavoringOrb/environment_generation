@@ -1,0 +1,18 @@
+CC=g++
+CFLAGS=-c -Wall -IC:/Users/aaron/CODING/C++_INCLUDES/SFML-2.5.1/include -DSFML_STATIC
+LDFLAGS=-shared -o output.dll
+
+SOURCES=dll_file.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=output.dll
+
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS)
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -f $(OBJECTS) $(EXECUTABLE)
